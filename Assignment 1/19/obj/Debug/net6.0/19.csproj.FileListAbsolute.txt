@@ -1,0 +1,15 @@
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\bin\Debug\net6.0\19.exe
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\bin\Debug\net6.0\19.deps.json
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\bin\Debug\net6.0\19.runtimeconfig.json
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\bin\Debug\net6.0\19.dll
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\bin\Debug\net6.0\19.pdb
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\19.csproj.AssemblyReference.cache
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\19.GeneratedMSBuildEditorConfig.editorconfig
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\19.AssemblyInfoInputs.cache
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\19.AssemblyInfo.cs
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\19.csproj.CoreCompileInputs.cache
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\19.dll
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\refint\19.dll
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\19.pdb
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\19.genruntimeconfig.cache
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 1\19\obj\Debug\net6.0\ref\19.dll
