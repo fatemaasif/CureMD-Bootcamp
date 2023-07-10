@@ -4,3 +4,10 @@ C:\Users\4828\Documents\Project Files\Project 1\Project 1\bin\Debug\Project 1.ex
 C:\Users\4828\Documents\Project Files\Project 1\Project 1\bin\Debug\Project 1.pdb
 C:\Users\4828\Documents\Project Files\Project 1\Project 1\obj\Debug\Project 1.exe
 C:\Users\4828\Documents\Project Files\Project 1\Project 1\obj\Debug\Project 1.pdb
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Project 1\Project 1\obj\Debug\Project 1.csproj.AssemblyReference.cache
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Project 1\Project 1\obj\Debug\Project 1.csproj.CoreCompileInputs.cache
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Project 1\Project 1\obj\Debug\Project 1.exe
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Project 1\Project 1\obj\Debug\Project 1.pdb
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Project 1\Project 1\bin\Debug\Project 1.exe.config
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Project 1\Project 1\bin\Debug\Project 1.exe
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Project 1\Project 1\bin\Debug\Project 1.pdb
