@@ -12,6 +12,7 @@ namespace Project_1
     {
         static void FrequencyAnalyzer(string[] text)
         {
+            Console.WriteLine("Word Frequency:");
             int freq;
             int[] frequencyarr = new int[text.Length];
             string[] temparr = new string[text.Length];
@@ -32,7 +33,7 @@ namespace Project_1
             {
                 if (frequencyarr[i] == 1)
                 {
-                    Console.WriteLine(text[i] + ": " + frequencyarr[i]);
+                    Console.WriteLine("\"" + text[i] + "\"" + ": " + frequencyarr[i]);
                 }
                 else
                 {
@@ -45,7 +46,7 @@ namespace Project_1
                     }
                     if(!flag)
                     {
-                        Console.WriteLine(text[i] + ": " + frequencyarr[i]);
+                        Console.WriteLine("\"" + text[i] + "\"" + ": " + frequencyarr[i]);
                     }
                 }
                 flag = false;
@@ -57,7 +58,7 @@ namespace Project_1
         {
             string[] sentence = new string[5];
             Random rnd = new Random();
-            Console.WriteLine("\n\nSentences:\n");
+            Console.WriteLine("\n\nGenerated Sentences:\n");
             for (int i = 0; i < N; i++)
             {
                 for (int j = 0; j < 5; j++)
@@ -65,6 +66,7 @@ namespace Project_1
                     int index = rnd.Next(0, pool.Length);
                     sentence[j] = pool[index];
                 }
+                Console.Write(i+1 + ". ");
                 foreach (string sen in sentence)
                 {
                     Console.Write(sen + ' ');
@@ -201,6 +203,35 @@ namespace Project_1
             Console.ReadKey();
             Console.Clear();
         }
+        static void VCCounter(string[] inputwords)
+        {
+            Console.WriteLine("Vowels and Consonants Count:");
+            for (int i = 0; i < inputwords.Length; i++) //each iteration to work on one word
+            {
+                int vowels = 0, consonants = 0;
+                for (int j = 0; j < inputwords[i].Length; j++) //each iteration to work on single letter
+                {
+                    //count number of vowels & consonants
+                    if (inputwords[i][j] == 'a') { vowels++; }
+                    else if (inputwords[i][j] == 'e') { vowels++; }
+                    else if (inputwords[i][j] == 'i') { vowels++; }
+                    else if (inputwords[i][j] == 'o') { vowels++; }
+                    else if (inputwords[i][j] == 'u') { vowels++; }
+                    else { consonants++; }
+                }
+                bool flag = false;
+                for (int k = i-1; k >= 0; k--) //check if word has already been printed before
+                {
+                    if (inputwords[i] == inputwords[k])
+                    {
+                        flag = true;
+                    }
+                }
+                if (!flag) { Console.WriteLine($"\"{inputwords[i]}\": {vowels} vowels and {consonants} consonants"); }
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
 
         static void Main(string[] args)
         {
@@ -217,40 +248,45 @@ namespace Project_1
                 while (!newsentence)
                 {
                     Console.WriteLine("\nChoose the option by entering its corresponding number (1-8):\n1.Word Frequency Analysis\n2.Sentence Maker\n3.Longest and Shortest Word Finder\n4.Word Search\n5.Palindrome Detector\n6.Vowel/Consonant Counter\n7.Analyze new sentence\n8.Exit Program");
-                    Console.Write("Option: ");
+                    Console.Write("\nOption: ");
                     int option = int.Parse(Console.ReadLine());
                     Console.Clear();
                     switch (option)
                     {
                         case 1:
                             Console.WriteLine("Word Frequency Analysis");
-                            Console.WriteLine("Obtain frequency of each word in the sentence.");
+                            Console.WriteLine("Obtain frequency of each word in the sentence.\n");
                             FrequencyAnalyzer(inputwords);
                             break;
                         case 2:
                             Console.WriteLine("Sentence Maker");
                             Console.Write("Enter number of sentences to generate: ");
                             int N = int.Parse(Console.ReadLine());
+                            Console.WriteLine();
                             GenerateSentence(N, inputwords);
                             break;
                         case 3:
-                            Console.WriteLine("Word Finder");
-                            Console.WriteLine("Display the longest and shortest words in the sentence.");
+                            Console.WriteLine("Longest and Shortest Word Finder");
+                            Console.WriteLine("Display the longest and shortest words in the sentence.\n");
                             LongShortFinder(inputwords);
                             break;
                         case 4:
-                            Console.WriteLine("Longest and Shortest Word Finder");
+                            Console.WriteLine("Word Finder");
                             Console.WriteLine("Check if word exists and display its frequency.");
-                            Console.Write("Enter word to search: ");
+                            Console.Write("\nEnter word to search: ");
                             string searchword = Console.ReadLine();
+                            Console.WriteLine();
                             WordFinder(inputwords,searchword);
                             break;
                         case 5:
                             Console.WriteLine("Palindrome Detector");
-                            Console.WriteLine("Check if there are any palindromes in the sentence and display them");
+                            Console.WriteLine("Check if there are any palindromes in the sentence and display them\n");
                             PalindromeDetector(inputwords);
                             break;
                         case 6:
+                            Console.WriteLine("Vowel & Consonant Counter");
+                            Console.WriteLine("Display the number of vowels and consonents in the sentence\n");
+                            VCCounter(inputwords);
                             break;
                         case 7:
                             newsentence = true;
