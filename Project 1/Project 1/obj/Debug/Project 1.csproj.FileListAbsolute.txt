@@ -1,0 +1,6 @@
+C:\Users\4828\Documents\Project Files\Project 1\Project 1\bin\Debug\Project 1.exe.config
+C:\Users\4828\Documents\Project Files\Project 1\Project 1\obj\Debug\Project 1.csprojResolveAssemblyReference.cache
+C:\Users\4828\Documents\Project Files\Project 1\Project 1\bin\Debug\Project 1.exe
+C:\Users\4828\Documents\Project Files\Project 1\Project 1\bin\Debug\Project 1.pdb
+C:\Users\4828\Documents\Project Files\Project 1\Project 1\obj\Debug\Project 1.exe
+C:\Users\4828\Documents\Project Files\Project 1\Project 1\obj\Debug\Project 1.pdb
