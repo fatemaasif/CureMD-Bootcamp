@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Project_1
 {
@@ -137,7 +139,68 @@ namespace Project_1
             Console.ReadKey();
             Console.Clear();
         }
+        static void WordFinder(string[] words, string searchword)
+        {
+            int freq = 0;
+            bool matchfound = false;
+            foreach (string word in words)
+            {
+                if (word==searchword)
+                {
+                    matchfound= true;
+                    freq++;
+                }
+            }
+            if (matchfound)
+            {
+                Console.WriteLine($"The word \"{searchword}\" appears {freq} time(s) in the sentence.");
+            }
+            else
+            {
+                Console.WriteLine("Word not found.");
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
+        static void PalindromeDetector(string[] words)
+        {
+            bool[] palindromedetected = new bool[words.Length];
+            for (int i = 0; i < words.Length; i++) //this for loop takes each word and flags it as a palidrome if it is
+            {
+                string reversed = "";
+                for (int j = words[i].Length - 1; j >= 0; j--)//first reverse each word
+                {
+                    reversed = reversed + words[i][j];
+                }
+                //check which words are palindromes and only write word once
+                if (reversed == words[i]) { palindromedetected[i] = true; }
+                else { palindromedetected[i] = false; }
+            }
 
+            bool flag = false, nopalindrome = true;
+            for (int i = 0; i < palindromedetected.Length; i++) //to loop through palindrome bool array
+            {
+                if (palindromedetected[i]) //if the word is a palindrome 
+                {
+                    nopalindrome = false;
+                    for (int k = i - 1; k >= 0; k--) //for loop to check if it has been printed before else print it
+                    {
+                        if (words[i] == words[k])
+                        {
+                            flag = true;
+                        }
+                    }
+                    if (!flag)
+                    {
+                        Console.WriteLine($"{words[i]} is a Palindrome");
+                    }
+                }
+                flag = false;
+            }
+            if (nopalindrome) { Console.WriteLine("There are no palindromic words in the sentence."); }
+            Console.ReadKey();
+            Console.Clear();
+        }
 
         static void Main(string[] args)
         {
@@ -148,13 +211,13 @@ namespace Project_1
                 Console.WriteLine("Welcome to the Text Analyzer!\n");
                 Console.WriteLine("Enter a sentence to analyze it: ");
                 string inputsentence = Console.ReadLine();
-                inputsentence = inputsentence.ToLower();    
-                Console.WriteLine();
+                inputsentence = inputsentence.ToLower();
                 string[] inputwords = inputsentence.Split(' ');
                 bool newsentence = false;
-                while (!exit || !newsentence)
+                while (!newsentence)
                 {
-                    Console.WriteLine("Choose the option by entering its corresponding number (1-8):\n1.Word Frequency Analysis\n2.Sentence Maker\n3.Longest and Shortest Word Finder\n4.Word Search\n5.Palindrome Detector\n6.Vowel/Consonant Counter\n7.Analyze new sentence\n8.Exit Program");
+                    Console.WriteLine("\nChoose the option by entering its corresponding number (1-8):\n1.Word Frequency Analysis\n2.Sentence Maker\n3.Longest and Shortest Word Finder\n4.Word Search\n5.Palindrome Detector\n6.Vowel/Consonant Counter\n7.Analyze new sentence\n8.Exit Program");
+                    Console.Write("Option: ");
                     int option = int.Parse(Console.ReadLine());
                     Console.Clear();
                     switch (option)
@@ -171,13 +234,21 @@ namespace Project_1
                             GenerateSentence(N, inputwords);
                             break;
                         case 3:
-                            Console.WriteLine("Longest and Shortest Word Finder");
+                            Console.WriteLine("Word Finder");
                             Console.WriteLine("Display the longest and shortest words in the sentence.");
                             LongShortFinder(inputwords);
                             break;
                         case 4:
+                            Console.WriteLine("Longest and Shortest Word Finder");
+                            Console.WriteLine("Check if word exists and display its frequency.");
+                            Console.Write("Enter word to search: ");
+                            string searchword = Console.ReadLine();
+                            WordFinder(inputwords,searchword);
                             break;
                         case 5:
+                            Console.WriteLine("Palindrome Detector");
+                            Console.WriteLine("Check if there are any palindromes in the sentence and display them");
+                            PalindromeDetector(inputwords);
                             break;
                         case 6:
                             break;
@@ -185,6 +256,7 @@ namespace Project_1
                             newsentence = true;
                             break;
                         case 8:
+                            newsentence = true;
                             exit = true;
                             break;
                         default:
