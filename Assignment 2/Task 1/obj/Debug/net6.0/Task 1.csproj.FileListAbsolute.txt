@@ -1,0 +1,5 @@
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 2\Task 1\obj\Debug\net6.0\Task 1.csproj.AssemblyReference.cache
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 2\Task 1\obj\Debug\net6.0\Task 1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 2\Task 1\obj\Debug\net6.0\Task 1.AssemblyInfoInputs.cache
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 2\Task 1\obj\Debug\net6.0\Task 1.AssemblyInfo.cs
+E:\Fatema Asif\Documents\GitHub\CureMD-Bootcamp\Assignment 2\Task 1\obj\Debug\net6.0\Task 1.csproj.CoreCompileInputs.cache
