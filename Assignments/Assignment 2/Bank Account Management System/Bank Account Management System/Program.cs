@@ -30,17 +30,17 @@ namespace Bank_Account_Management_System
             Console.WriteLine("Your current balance is $" + Balance);
             Console.WriteLine();
         }
-        public virtual void Withdraw(int withdrawamount)
-        {
-            Balance -= withdrawamount;
-            Console.WriteLine("$" + withdrawamount + " has been debited from your account");
-            Console.WriteLine("Your current balance is $" + Balance);
-            Console.WriteLine();
-        }
         public virtual void Deposit(double depositamount) //overloaded deposit method with double arg
         {
             Balance += depositamount;
             Console.WriteLine("$"+depositamount+" has been deposited into your account");
+            Console.WriteLine("Your current balance is $" + Balance);
+            Console.WriteLine();
+        }
+        public virtual void Withdraw(int withdrawamount)
+        {
+            Balance -= withdrawamount;
+            Console.WriteLine("$" + withdrawamount + " has been debited from your account");
             Console.WriteLine("Your current balance is $" + Balance);
             Console.WriteLine();
         }
