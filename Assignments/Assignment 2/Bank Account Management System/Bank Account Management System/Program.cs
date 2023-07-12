@@ -13,14 +13,15 @@ namespace Bank_Account_Management_System
     }
     public abstract class BankAccount:IBankAccount
     {
-        protected int AccNum;
-        protected double Balance;
-        protected string AccHolName;
-        public BankAccount(int accountnumber, string holdername, int balance)
+        public int AccountNumber {get; set;}
+        public double Balance {get; set;}
+        public string AccHolName {get; set;}
+        public double interestrate = 0.05;
+        public BankAccount(int accnum, string holname, int bal)
         {
-            AccNum = accountnumber;
-            AccHolName = holdername;
-            Balance = balance;
+            AccountNumber = accnum;
+            AccHolName = holname;
+            Balance = bal;
         }
         public virtual void Deposit(int depositamount)
         {
@@ -36,13 +37,34 @@ namespace Bank_Account_Management_System
             Console.WriteLine("Your current balance is $" + Balance);
             Console.WriteLine();
         }
+        public virtual void Deposit(double depositamount) //overloaded deposit method with double arg
+        {
+            Balance += depositamount;
+            Console.WriteLine("$"+depositamount+" has been deposited into your account");
+            Console.WriteLine("Your current balance is $" + Balance);
+            Console.WriteLine();
+        }
+        public virtual void Withdraw(double withdrawamount) //overloaded withdraw method with double arg
+        {
+            Balance -= withdrawamount;
+            Console.WriteLine("$" + withdrawamount + " has been debited from your account");
+            Console.WriteLine("Your current balance is $" + Balance);
+            Console.WriteLine();
+        }
         public void DisplayAccountInfo()
         {
             Console.WriteLine();
-            Console.WriteLine("Account Number: " + AccNum);
+            Console.WriteLine("Account Number: " + AccountNumber);
             Console.WriteLine("Account Holder's Name: " + AccHolName);
             Console.WriteLine("Total Balance: " + Balance);
             Console.WriteLine();
+        }
+        public virtual double CalculateInterest()
+        {
+            //private double interestRate = 0.05;
+            //private double timeSinceBalanceUpdated = 1;
+            private double TotalInterest = 1;//Balance*interestRate*timeSinceBalanceUpdated;
+            return TotalInterest;
         }
     }
     public class SavingsAccount : BankAccount
@@ -52,7 +74,7 @@ namespace Bank_Account_Management_System
             Console.WriteLine("You have succesfully created a Savings Account with us. Thank you!");
             Console.WriteLine();
         }
-        public double interestRate=0.05;
+        
         public override void Deposit(int depositamount)
         {
             double modifieddeposit = depositamount*(1+interestRate);
@@ -61,6 +83,16 @@ namespace Bank_Account_Management_System
             Console.WriteLine("Your current balance is $" + Balance);
             Console.WriteLine();
         }
+        public override void Deposit(double depositamount)
+        {
+            double modifieddeposit = depositamount*(1+interestRate);
+            Balance += modifieddeposit;
+            Console.WriteLine("$" + modifieddeposit + " has been deposited into your account against a deposit of $"+depositamount);
+            Console.WriteLine("Your current balance is $" + Balance);
+            Console.WriteLine();
+        }
+        public override double CalculateInterest()
+        {}
     }
     public class CheckingAccount : BankAccount
     {
@@ -81,6 +113,18 @@ namespace Bank_Account_Management_System
                 base.Withdraw(withdrawamount);
             }
         }
+        public override double CalculateInterest()
+        {}
+    }
+    public class LoanAccount : BankAccount
+    {
+        public LoanAccount(int anum, string hn, int bal) : base(anum, hn, bal) 
+        {
+            Console.WriteLine("You have succesfully created a Loan Account with us. Thank you!");
+            Console.WriteLine();
+        }
+        public override double CalculateInterest()
+        {}
     }
     public class Bank
     {
