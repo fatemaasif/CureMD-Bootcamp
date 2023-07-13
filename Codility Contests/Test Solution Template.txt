@@ -1,0 +1,35 @@
+using System;
+
+namespace Contest5
+{
+    class Program
+    {
+        static int func1()
+        {
+            int result=0;
+
+            return result;
+        }
+        static string func2()
+        {
+            string str="";
+
+            return str;
+        }
+        static void func3()
+        {
+
+        }
+        static void Main(string[] args)
+        {
+            int val = func1();
+            Console.WriteLine(val+'\n');
+
+            //int str = func2();
+            //Console.WriteLine(str + '\n');
+
+            //func3();
+            //Console.WriteLine();
+        }
+    }
+}
