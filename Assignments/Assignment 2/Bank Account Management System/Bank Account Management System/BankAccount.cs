@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Bank_Account_Management_System
 {
@@ -33,7 +34,21 @@ namespace Bank_Account_Management_System
             Console.WriteLine();
         }
         public abstract double CalculateInterest(double amount);
-     
-        
+
+        public void PrintTransactionHistory()
+        {
+            Console.WriteLine($"Transaction History for {AccHolName} with {AccType}:");
+            foreach (Transaction T in ListofTransactions)
+            {
+                Console.WriteLine($"{T.TransactionType}: ${T.TransactionAmount}");
+            }
+        }
+
+        public abstract void Deposit(double amount);
+        public abstract void Deposit(int amount);
+        public abstract void Withdraw(double amount);
+        public abstract void Withdraw(int amount);
+        public abstract void BankCharges();
+        public abstract void InterestAccrual();
     } 
 }

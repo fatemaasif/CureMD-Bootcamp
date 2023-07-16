@@ -21,13 +21,5 @@ namespace Bank_Account_Management_System
         {
             DictionaryofAccounts.Add(Acc.AccountNumber, Acc);
         }
-        public void DepositToAccount(BankAccount Acc, int DA)
-        {
-            Acc.Deposit(DA);
-        }
-        public void WithdrawFromAccount(BankAccount Acc, int WA)
-        {
-            Acc.Withdraw(WA);
-        }
     }
 }
