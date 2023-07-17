@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B4F476FE-0252-499B-89BC-84ED24BF1453}</ProjectGuid>
+    <ProjectGuid>{B58A8813-2A10-4E4D-9CDF-2F6C9BC652A6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Zoo_Management_System</RootNamespace>
-    <AssemblyName>Zoo Management System</AssemblyName>
+    <RootNamespace>Contest7</RootNamespace>
+    <AssemblyName>Contest7</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

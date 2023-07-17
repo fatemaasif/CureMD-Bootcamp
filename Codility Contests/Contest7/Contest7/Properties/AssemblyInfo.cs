@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Zoo Management System")]
+[assembly: AssemblyTitle("Contest7")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Zoo Management System")]
+[assembly: AssemblyProduct("Contest7")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0414ca2d-3f41-4fd8-9066-0d3495269bb1")]
+[assembly: Guid("ba9304f9-7cb6-4a84-9455-68bb312851f4")]
 
 // Version information for an assembly consists of the following four values:
 //

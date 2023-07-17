@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoo Management System", "Zoo Management System\Zoo Management System.csproj", "{B4F476FE-0252-499B-89BC-84ED24BF1453}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contest7", "Contest7\Contest7.csproj", "{B58A8813-2A10-4E4D-9CDF-2F6C9BC652A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B4F476FE-0252-499B-89BC-84ED24BF1453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4F476FE-0252-499B-89BC-84ED24BF1453}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4F476FE-0252-499B-89BC-84ED24BF1453}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4F476FE-0252-499B-89BC-84ED24BF1453}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B58A8813-2A10-4E4D-9CDF-2F6C9BC652A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58A8813-2A10-4E4D-9CDF-2F6C9BC652A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B58A8813-2A10-4E4D-9CDF-2F6C9BC652A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B58A8813-2A10-4E4D-9CDF-2F6C9BC652A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

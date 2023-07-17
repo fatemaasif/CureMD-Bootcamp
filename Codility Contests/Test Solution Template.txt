@@ -6,13 +6,13 @@ namespace Contest5
     {
         static int func1()
         {
-            int result=0;
+            int result = 0;
 
             return result;
         }
         static string func2()
         {
-            string str="";
+            string str = "";
 
             return str;
         }
@@ -22,14 +22,14 @@ namespace Contest5
         }
         static void Main(string[] args)
         {
-            int val = func1();
-            Console.WriteLine(val+'\n');
+            Console.WriteLine(func1());
 
-            //int str = func2();
-            //Console.WriteLine(str + '\n');
+            //Console.WriteLine(func2());
 
             //func3();
             //Console.WriteLine();
+
+            Console.ReadKey();
         }
     }
 }
