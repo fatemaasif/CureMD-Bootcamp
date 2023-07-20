@@ -36,6 +36,7 @@ namespace Bank_Account_Management_System
             LoanAcc.Deposit(5000.23);
             LoanAcc.InterestAccrual();
             LoanAcc.PrintTransactionHistory();
+            Console.WriteLine();
             nonTransactionAcc.PrintTransactionHistory();
             Console.ReadKey();
         }
