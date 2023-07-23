@@ -9,11 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         header {
-            position: fixed;
+            position: relative;
+            top: 0px;
             width: 100%;
-            height: 15%;
+            height: 101px;
             border-top: 10px solid rgb(61, 58, 58);
             background-color: rgb(112, 28, 112);
+            display: inline-block;
 
         }
 
@@ -24,10 +26,10 @@
             color: rgb(56, 51, 51);
             text-align: center;
             width: 64%;
-            height: 40%;
+            height: 39px;
             border-radius: 20px;
-            margin-top: 2%;
-            margin-right: 2%;
+            margin-top: 26px;
+            margin-right: 1.5%;
             padding-top: 0%;
             padding-bottom: 1%;
             padding-right: 1%;
@@ -60,6 +62,7 @@
 
         section {
             float: left;
+            margin-top: -110px;
         }
 
         li.foodlistcontent {
@@ -73,21 +76,39 @@
 
         form {
             float: right;
-            margin-top: 9.5%;
-            margin-right: ;
+            margin-top: -118px;
+            margin-bottom: 50px;
+            position: relative;
+            width: 36%;
+            font-size: 12px;
         }
 
         footer {
-            position: absolute;
-            bottom: 0;
+            display: flex;
+            position: relative;
+            bottom: -7px;
+            right: 0;
+            left: 0;
             width: 100%;
-            height: 4%;
+            height: 27px;
             background-color: rgb(61, 58, 58);
             text-align: center;
             color: antiquewhite;
             padding-top: 1%;
+            align-items: baseline;
+            justify-items: center;
+            flex-wrap: nowrap;
+            justify-content: center;
         }
 
+        footer a:link {
+            color: antiquewhite;
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            text-decoration: none;
+        }
 
         .main {
             font-family: 'Quicksand', sans-serif;
@@ -101,17 +122,18 @@
             padding-left: 2%;
             color: white;
             font-size: 32px;
+            background-color: rgb(112, 28, 112);
         }
 
         h2.regions {
             position: relative;
-            margin-left: 4%;
-            margin-top: 2%;
+            margin-left: 25px;
+            margin-top: 11px;
             float: left;
         }
 
         .content {
-            position: fixed;
+            position: relative;
             width: 60%;
             height: 75%;
             margin-top: 9.5%;
@@ -157,14 +179,11 @@
                 </tr>
                 <tr style="vertical-align:text-top ;">
                     <td>
-                        <ul>
-                            <li class="foodlistcontent">Kenya: Nyama Choma</li>
-                            <li class="foodlistcontent">Nigeria: Jollof rice</li>
-                            <li class="foodlistcontent">Uganda: oluwombo</li>
-                            <li class="foodlistcontent">Morocco: Couscous</li>
-                            <li class="foodlistcontent"> Ethiopia: Injera with various stews</li>
-                            <li class="foodlistcontent">Egypt: Koshari</li>
-                        </ul>
+                        <h3>Welcome to Our Foodie Paradise!</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut felis at nibh malesuada
+                            sodales. Proin sed tincidunt quam. Aenean id quam in ipsum cursus euismod. Maecenas varius,
+                            libero eu rutrum fringilla, justo tellus posuere libero, vel ullamcorper mauris turpis vel
+                            nunc. </p>
                     </td>
                     <td>
                         <ul>
@@ -190,47 +209,126 @@
             </table>
         </section>
     </div>
+
+    <form>
+        <h3 style="text-align: center;">The Food Personality Quiz </h3>
+        <fieldset>
+            <legend><b>Determine Your Food Personality</b></legend>
+
+            <label for="name">Full Name: </label>
+            <input type="text" id="name" size="20">
+
+            <input type="number" id="age" min="8" max="100" style="float: right;">
+            <label for="age" style="float: right;">Age: &nbsp;</label><br><br>
+
+            <label for="dob">Date of birth: &nbsp;</label>
+            <input type="date" name="dob" id="dob" min="1923-08-01" max="2015-01-01"><br><br>
+
+
+            <label for="favouriteCuisine">Cuisine that appeals to you the most:</label>
+            <select name="favouriteCuisine" id="favouriteCuisine" size="2;">
+                <option value="Italian">Italian</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Indian">Indian</option>
+                <option value="American">American</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Thai">Thai</option>
+                <option value="French">French</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+            </select><br><br>
+
+            <p>Your go-to breakfast options:</p>
+            <input type="checkbox" name="breakfastoptions" id="breakfastoptions" value="avocadotoast">
+            <label for="breakfastoptions">Avocado toast & poached eggs</label>
+            <input type="checkbox" name="pancake" id="pancake" value="pancake">
+            <label for="pancake">Fluffy pancakes</label>
+            <input type="checkbox" name="smoothie" id="smoothie" value="smoothie">
+            <label for="smoothie">Smoothie bowl</label>
+            <input type="checkbox" name="traditional" id="traditional" value="traditional">
+            <label for="traditional">Traditional omelet</label><br><br>
+
+            <label for="favfoodcolor">Think of the color of your favourite food:</label>
+            <input type="color" value="favfoodcolor" id="favfoodcolor"><br><br>
+
+            <p>Unconventional food combinations?</p>
+            <input type="radio" name="foodcombos1" id="foodcombos1">
+            <label for="foodcombos1">Love it! The more unexpected, the better.</label><br>
+            <input type="radio" name="foodcombos2" id="foodcombos2">
+            <label for="foodcombos2">I'm open to it, but it depends on the ingredients.</label><br>
+            <input type="radio" name="foodcombos3" id="foodcombos3">
+            <label for="foodcombos3">Not really my thing, I prefer classic combinations.</label><br>
+            <input type="radio" name="foodcombos4" id="foodcombos4">
+            <label for="foodcombos4">No way, I like to stick to traditional pairings.</label><br>
+
+            <p>What's your take on spicy food?</p>
+            <input type="radio" name="spicyfood1" id="spicyfood1">
+            <label for="spicyfood1">Bring on the heat! I love the fiery kick.</label><br>
+            <input type="radio" name="spicyfood2" id="spicyfood2">
+            <label for="spicyfood2">I enjoy a bit of spice but nothing too intense.</label><br>
+            <input type="radio" name="spicyfood3" id="spicyfood3">
+            <label for="spicyfood3">I prefer mild flavors; spicy food isn't for me.</label><br>
+            <input type="radio" name="spicyfood4" id="spicyfood4">
+            <label for="spicyfood4">I actively avoid spicy dishes; I can't handle the heat.</label><br>
+
+            <p>When dining out, what appeals to you the most?</p>
+            <input type="radio" name="appeal1" id="appeal1">
+            <label for="appeal1">Trying the chef's special or tasting menu.</label><br>
+            <input type="radio" name="appeal2" id="appeal2">
+            <label for="appeal2">Visiting the local food truck scene for unique eats.</label><br>
+            <input type="radio" name="appeal3" id="appeal3">
+            <label for="appeal3">Enjoying a cozy and comforting meal at a family-run restaurant.</label><br>
+            <input type="radio" name="appeal4" id="appeal4">
+            <label for="appeal4">Opting for a well-established restaurant with a renowned reputation.</label><br><br>
+
+            <label for="email">To get a copy of your results give your email: &nbsp;</label>
+            <input type="email" name="email" id="email"><br><br>
+
+            <input type="reset" value="Reset">
+            <input type="submit" value="Submit">
+
+        </fieldset>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Food Item</th>
+                <th>Category</th>
+                <th>Calories (per serving)</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pasta Carbonara</td>
+                <td>Italian</td>
+                <td>480</td>
+                <td>$5.99</td>
+            </tr>
+            <tr>
+                <td>Sushi Roll (California Roll)</td>
+                <td>Japanese</td>
+                <td>300</td>
+                <td>$8.50</td>
+            </tr>
+            <tr>
+                <td>Tacos al Pastor</td>
+                <td>Mexican</td>
+                <td>340</td>
+                <td>$6.95</td>
+            </tr>
+            <tr>
+                <td>Hummus with Pita Bread</td>
+                <td>Middle Eastern</td>
+                <td>180</td>
+                <td>$15.50</td>
+            </tr>
+        </tbody>
+    </table>
     <div>
-        <form>
-            <h3 style="text-align: center;">The Food Personality Quiz </h3>
-            <fieldset>
-                <legend>Determine Your Food Personality</legend>
-                <label for="name">Full Name: </label>
-                <input type="text" id="name">
-
-                <label for="age">Age: </label>
-                <input type="number" min="8" id="age"><br><br>
-
-                <label for="favouriteCuisine">What is your favorite type of cuisine?</label>
-                <select name="favouriteCuisine" id="favouriteCuisine" size="2;">
-                    <option value="Italian">Italian</option>
-                    <option value="Mexican">Mexican</option>
-                    <option value="Japanese">Japanese</option>
-                    <option value="Indian">Indian</option>
-                    <option value="American">American</option>
-                    <option value="Chinese">Chinese</option>
-                    <option value="Thai">Thai</option>
-                    <option value="French">French</option>
-                    <option value="Mediterranean">Mediterranean</option>
-                    <option value="Middle Eastern">Middle Eastern</option>
-                </select><br>
-
-                <label for="Dessert">Pick one dessert to indulge in:</label>
-                
-
-
-
-
-
-
-
-
-
-            </fieldset>
-        </form>
-    </div>
-    <div>
-        <footer>Copyright 2023. Developed by Fatema Asif. All Rights Reserved.</footer>
+        <footer>Copyright 2023. Developed by &nbsp;<a href="mailto:fatemaasif268@gmail.com">Fatema Asif</a>. All Rights
+            Reserved.</footer>
     </div>
 
 
