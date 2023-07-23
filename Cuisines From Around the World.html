@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="src" href="scriptforwebpage.js">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         header {
@@ -138,6 +139,27 @@
             height: 75%;
             margin-top: 9.5%;
         }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
     </style>
 </head>
 
@@ -150,11 +172,22 @@
             <h2 class="regions">
                 Regions
             </h2>
+
             <ul class="navbar">
-                <li class="iteminnavbar" style="float: right;"><a href="#South East Asia">South-East Asia</a></li>
-                <li class="iteminnavbar" style="float: right;"><a href="#Carribean Islands">Carribean Islands</a></li>
-                <li class="iteminnavbar" style="float: right;"><a href="#Africa">Africa</a></li>
+                <li class="iteminnavbar" style="float: right;" id="SEA"><a href="#South East Asia">South-East
+                        Asia</a></li>
+                <li class="iteminnavbar" style="float: right;" id="CI"><a href="#Carribean Islands">Carribean
+                        Islands</a></li>
+                <li class="iteminnavbar" style="float: right;" id="Afr"><a href="#Africa">Africa</a></li>
             </ul>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+
         </nav>
     </header>
     <div class="content">
