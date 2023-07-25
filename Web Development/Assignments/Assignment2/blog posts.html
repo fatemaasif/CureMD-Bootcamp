@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>Dynamic Content Loading</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="blogPosts">
+        <div id="blogPostContent1">
+            <h2>Blog Post 1</h2>
+            <p>This is blog post 1</p>
+        </div>
+        <div id="blogPostContent2">
+            <h2>Blog Post 2</h2>
+            <p>This is blog post 2</p>
+        </div>
+        <div id="blogPostContent3">
+            <h2>Blog Post 3</h2>
+            <p>This is blog post 3</p>
+        </div>
+    </div>
+    <button type="button" onclick="loadBlogPosts()" id="loadMoreButton"> Load Next</button>
+    <button type="button" onclick="loadBlogPostsPrev()" id="loadPrevButton"> Load Previous</button>
+    <script>
+        var nextPostIndex = 0;
+        var PrevPostIndex;
+        function loadBlogPosts() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                const post = JSON.parse(this.responseText); //gets array of posts from the page
+                for (let i = nextPostIndex; i < nextPostIndex + 1 && i < post.length; i++) {
+                    //for first placeholder
+                    const blogPostsPlacement1 = document.getElementById('blogPostContent1');
+                    blogPostsPlacement1.innerHTML = displayBlogPosts(post[i]);
+                    //for second placeholder
+                    const blogPostsPlacement2 = document.getElementById('blogPostContent2');
+                    blogPostsPlacement2.innerHTML = displayBlogPosts(post[i+1]);
+                    //for first placeholder
+                    const blogPostsPlacement3 = document.getElementById('blogPostContent3');
+                    blogPostsPlacement3.innerHTML = displayBlogPosts(post[i+2]);
+                }
+                nextPostIndex+=3;
+                PrevPostIndex = nextPostIndex;
+            };
+            xhttp.open("GET", "https://jsonplaceholder.typicode.com/posts");
+            xhttp.send();
+        }
+        
+        function loadBlogPostsPrev() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                const post = JSON.parse(this.responseText); //gets array of posts from the page
+                for (let i = PrevPostIndex; i > PrevPostIndex - 1 && i > 1; i--) {
+                    //for first placeholder
+                    const blogPostsPlacement1 = document.getElementById('blogPostContent1');
+                    blogPostsPlacement1.innerHTML = displayBlogPosts(post[i]);
+                    //for second placeholder
+                    const blogPostsPlacement2 = document.getElementById('blogPostContent2');
+                    blogPostsPlacement2.innerHTML = displayBlogPosts(post[i-1]);
+                    //for first placeholder
+                    const blogPostsPlacement3 = document.getElementById('blogPostContent3');
+                    blogPostsPlacement3.innerHTML = displayBlogPosts(post[i-2]);
+                }
+                PrevPostIndex-=3;
+            };
+            xhttp.open("GET", "https://jsonplaceholder.typicode.com/posts");
+            xhttp.send();
+        }
+        function displayBlogPosts(post) {
+            var html = '';
+            html += '<h2>' + post.title + '</h2>';
+            html += '<p>' + post.body + '</p>';
+            return html;
+        }
+    </script>
+</body>
+
+</html>
