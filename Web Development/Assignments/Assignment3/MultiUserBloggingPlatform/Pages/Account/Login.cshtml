@@ -1,0 +1,19 @@
+﻿@page
+@model MultiUserBloggingPlatform.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "User Login";
+}
+    <h2>Login</h2>
+    <hr>
+
+    <form method="post">
+        <div class="LoginFormElements">
+            <label for="Username">Username</label>
+            <input type="text" class="LoginFormInput" id="Username" name="Username" required>
+        </div>
+        <div class="LoginFormElements">
+            <label for="Password">Password</label>
+            <input type="password" class="LoginFormInput" id="Password" name="Password" required>
+        </div>
+        <button type="submit" class="btn login">Login</button>
+    </form>
