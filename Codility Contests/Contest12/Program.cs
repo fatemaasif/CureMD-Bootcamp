@@ -60,7 +60,7 @@ namespace Contest12
         static int func3(string S)
         {
             int result = 0;
-            for (int i = 1; i < S.Length; i++)
+            for (int i = 1; i < S.Length-1; i++)
             {
                 string S1 = S.Substring(0, i);
                 string S2 = S.Substring(i + 1, S.Length);
