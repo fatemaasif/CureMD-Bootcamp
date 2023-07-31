@@ -59,7 +59,7 @@ namespace MultiUserBloggingPlatform
                 using (SqlCommand command = new SqlCommand("DeleteUser", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@UserId", UserID);
+                    command.Parameters.AddWithValue("@UID", UserID);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -67,7 +67,22 @@ namespace MultiUserBloggingPlatform
             }
         }
 
-        public User GetUser(int UserID)
+        public void DeleteUser(string username)
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("BlogDBConnection")))
+            {
+                using (SqlCommand command = new SqlCommand("DeleteUser", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Username", username);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public User GetUser(string username, string password)
         {
             User user = null;
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("BlogDBConnection")))
@@ -75,7 +90,8 @@ namespace MultiUserBloggingPlatform
                 using (SqlCommand command = new SqlCommand("GetUser", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@UID", UserID);
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@PassWd", password);
 
                     connection.Open();
 
@@ -98,7 +114,7 @@ namespace MultiUserBloggingPlatform
         }
 
         /// Post Methods
-        public void CreatePost(string postText, int CatID, int userID)
+        public void CreatePost(string postText, int CatID, int userID, string posttitle, string username)
         {
 
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("BlogDBConnection")))
@@ -109,6 +125,8 @@ namespace MultiUserBloggingPlatform
                     command.Parameters.AddWithValue("@PText", postText);
                     command.Parameters.AddWithValue("@CatID", CatID);
                     command.Parameters.AddWithValue("@UID", userID);
+                    command.Parameters.AddWithValue("@PTitle", posttitle);
+                    command.Parameters.AddWithValue("@Username", username);
 
                     connection.Open(); 
                     command.ExecuteNonQuery();
@@ -184,7 +202,7 @@ namespace MultiUserBloggingPlatform
         }
 
         /// Comment Methods
-        public void CreateComment(string commentText, int userID, int postID)
+        public void CreateComment(string commentText, int userID, int postID, string username, string posttitle)
         {
 
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("BlogDBConnection")))
@@ -195,6 +213,8 @@ namespace MultiUserBloggingPlatform
                     command.Parameters.AddWithValue("@CText", commentText);
                     command.Parameters.AddWithValue("@UID", userID);
                     command.Parameters.AddWithValue("@PID", postID);
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@PTitle", posttitle);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -202,7 +222,7 @@ namespace MultiUserBloggingPlatform
             }
         }
 
-        public void UpdateComment(int commentID, string commentText, int userID, int postID)
+        public void UpdateComment(int commentID, string commentText, int userID, int postID, string username, string postitle)
         {
 
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("BlogDBConnection")))
@@ -214,6 +234,8 @@ namespace MultiUserBloggingPlatform
                     command.Parameters.AddWithValue("@CText", commentText);
                     command.Parameters.AddWithValue("@UID", userID);
                     command.Parameters.AddWithValue("@PID", postID);
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@Title", postitle);
 
                     connection.Open();
                     command.ExecuteNonQuery();

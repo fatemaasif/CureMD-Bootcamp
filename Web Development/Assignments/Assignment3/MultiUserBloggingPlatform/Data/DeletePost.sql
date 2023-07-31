@@ -1,0 +1,11 @@
+CREATE PROCEDURE DeletePost
+@PID INT
+AS
+BEGIN
+DELETE FROM Posts
+      WHERE PostID=@PID
+END
+GO
+
+
+
