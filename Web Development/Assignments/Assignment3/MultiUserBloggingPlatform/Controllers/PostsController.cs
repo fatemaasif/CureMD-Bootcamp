@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiUserBloggingPlatform.Models;
-
+using System;
+using System.Collections.Generic;
 namespace MultiUserBloggingPlatform.Controllers
 {
     [Route("api/[controller]")]
@@ -30,7 +31,7 @@ namespace MultiUserBloggingPlatform.Controllers
         {
             try
             {
-                dataLayer.CreatePost(post.PostText, (int)post.CategoryID, (int)post.UserID);
+                dataLayer.CreatePost(post.PostText, (int)post.CategoryID, (int)post.UserID, post.PostTitle,post.Username);
                 return Ok(); // Return 200 OK if the user is created successfully
             }
             catch (Exception Exc)

@@ -1,3 +1,6 @@
+using System;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+
 namespace MultiUserBloggingPlatform
 {
     public class Program

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MultiUserBloggingPlatform.Models;
 using System.Net;
+using System;
 
 namespace MultiUserBloggingPlatform.Controllers
 {
@@ -16,9 +17,9 @@ namespace MultiUserBloggingPlatform.Controllers
         }
 
         [HttpGet("{UserID}")]
-        public IActionResult GetUser(int Userid)
+        public IActionResult GetUser(string username, string password)
         {
-            User user = dataLayer.GetUser(Userid);
+            User user = dataLayer.GetUser(username,password);
             if (user == null)
             {
                 return NotFound(); // the user is not found
@@ -41,26 +42,26 @@ namespace MultiUserBloggingPlatform.Controllers
             }
         }
         [HttpPut("{UserID}")]
-        public IActionResult UpdateUser(int id, User updatedUser)
+        public IActionResult UpdateUser(int userid, string username, string password, User updatedUser)
         {
-            User existingUser = dataLayer.GetUser(id);
+            User existingUser = dataLayer.GetUser(username,password);
             if (existingUser == null)
             {
                 return NotFound(); // User with the given id not found
             }
-            dataLayer.UpdateUser(id, updatedUser.Username, updatedUser.PassWd, updatedUser.Email);
+            dataLayer.UpdateUser(userid, updatedUser.Username, updatedUser.PassWd, updatedUser.Email);
             return Ok(); // Return 200 OK if the user is updated successfully
         }
 
         [HttpDelete("{UserID}")]
-        public IActionResult DeleteUser(int id)
+        public IActionResult DeleteUser(string username, string password)
         {
-            User existingUser = dataLayer.GetUser(id);
+            User existingUser = dataLayer.GetUser(username,password);
             if (existingUser == null)
             {
                 return NotFound(); // User with the given id not found
             }
-            dataLayer.DeleteUser(id);
+            dataLayer.DeleteUser((int)existingUser.UserID);
             return Ok(); // Return 200 OK if the user is deleted successfully
         }
 

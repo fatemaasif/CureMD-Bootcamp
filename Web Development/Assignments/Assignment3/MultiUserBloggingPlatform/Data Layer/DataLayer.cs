@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using MultiUserBloggingPlatform.Models;
+using System.Collections.Generic;
 
 namespace MultiUserBloggingPlatform
 

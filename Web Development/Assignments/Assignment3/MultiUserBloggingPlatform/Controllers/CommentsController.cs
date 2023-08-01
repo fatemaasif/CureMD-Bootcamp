@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using MultiUserBloggingPlatform.Models;
+using System;
 
 namespace MultiUserBloggingPlatform.Controllers
 {
@@ -33,7 +34,7 @@ namespace MultiUserBloggingPlatform.Controllers
         {
             try
             {
-                dataLayer.CreateComment(newComment.CommentText, (int)newComment.UserID, (int)newComment.PostID);
+                dataLayer.CreateComment(newComment.CommentText, (int)newComment.UserID, (int)newComment.PostID,newComment.Username,newComment.PostTitle);
                 return Ok(); // Return 200 OK if the user is created successfully
             }
             catch (Exception Exc)
@@ -52,7 +53,7 @@ namespace MultiUserBloggingPlatform.Controllers
                 return NotFound(); 
             }
 
-            dataLayer.UpdateComment(id, updatedComment.CommentText, (int)updatedComment.UserID, (int)updatedComment.PostID);
+            dataLayer.UpdateComment(id, updatedComment.CommentText, (int)updatedComment.UserID, (int)updatedComment.PostID, updatedComment.Username, updatedComment.PostTitle);
             return Ok(); 
         }
 
