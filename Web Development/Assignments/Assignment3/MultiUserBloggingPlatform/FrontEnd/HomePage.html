@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Blogger's Bay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        /* Add any custom CSS here */
+    </style>
+</head>
+<body>
+    <!--header container-->
+    <div class="w3-bar w3-black">
+        <h1 class="w3-bar-item w3-left">The Blogger's Bay</h1>
+        <div class="w3-right">
+            <a href="HomePage.html" class="w3-button w3-bar-item">Home</a>
+            <a href="Login.html" class="w3-button w3-bar-item">Login</a>
+            <div class="w3-dropdown-hover">
+                <button class="w3-button">Categories</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card">
+                    <a href="#" class="w3-bar-item w3-button category-item">Link 1</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-container">
+        <p>Welcome to the Blogger's Bay: Read blogs, Add blogs and Interact with other users through comments!</p>
+    </div>
+
+    <!--Create a post-->
+    <div class="w3-container w3-center" style="max-width: 500px; margin: auto;">
+        <div class="w3-card w3-margin" style="height: 300px;">
+            <form>
+                <h2>Create a Post</h2>
+                <label>Post Title</label><br />
+                <input type="text" /><br /><br />
+                <label>Post Content</label><br />
+                <textarea id="PostText" rows="4" cols="30"></textarea>
+            </form>
+        </div>
+    </div>
+
+    <!--post container-->
+    <div class="w3-container">
+        <div class="w3-card">
+            <p>Blog Entries</p>
+            <div class="blog-container">
+
+            </div>
+        </div>
+    </div>
+
+    <!--footer container-->
+    <div class="w3-container w3-dark-grey w3-padding-jumbo w3-bottom">
+        <p>&copy;2023 - Author: Fatema Asif</p>
+    </div>
+
+    <script src=""></script>
+</body>
+</html>
