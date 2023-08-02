@@ -21,7 +21,7 @@ namespace MultiUserBloggingPlatform.Controllers
             Category category = dataLayer.GetCategory(id);
             if (category == null)
             {
-                return NotFound(); 
+                return NotFound("Category not found"); 
             }
 
             return Ok(category); 
@@ -33,7 +33,7 @@ namespace MultiUserBloggingPlatform.Controllers
             try
             {
                 dataLayer.CreateCategory(newCategory.CategoryName);
-                return Ok(); 
+                return Ok("Category created succesfully"); 
             }
             catch (Exception Exc)
             {
@@ -48,11 +48,11 @@ namespace MultiUserBloggingPlatform.Controllers
             var existingCategory = dataLayer.GetCategory(id);
             if (existingCategory == null)
             {
-                return NotFound(); 
+                return NotFound("Category not found"); 
             }
 
             dataLayer.UpdateCategory(id, updatedCategory.CategoryName);
-            return Ok();
+            return Ok("Category updated succesfully");
         }
 
         [HttpDelete("{CategoryID}")]
@@ -61,11 +61,11 @@ namespace MultiUserBloggingPlatform.Controllers
             var existingCategory = dataLayer.GetCategory(id);
             if (existingCategory == null)
             {
-                return NotFound(); 
+                return NotFound("Category not found"); 
             }
 
             dataLayer.DeleteCategory(id);
-            return Ok(); 
+            return Ok("Category deleted succesfully"); 
         }
 
     }

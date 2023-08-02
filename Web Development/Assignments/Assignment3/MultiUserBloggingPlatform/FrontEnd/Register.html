@@ -4,8 +4,6 @@
 <title>The Blogger's Bay</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-</style>
 
 <body>
     <!--header container-->
@@ -26,14 +24,14 @@
     <!--This is the content for this page-->
     <div class="w3-card-12 w3-container w3-display-middle">
         <h2 class="w3-center">Register</h2>
-        <form>
+        <form id="registration-form">
             <label>Email</label><br />
-            <input class="w3-border" type="email" /><br /><br />
+            <input class="w3-border" type="email" id="emailInput" /><br /><br />
             <label>Username</label><br />
-            <input class="w3-border" type="text" /><br /><br />
+            <input class="w3-border" type="text" id="usernameInput" /><br /><br />
             <label>Password</label><br />
-            <input class="w3-border" type="password" /><br /><br />
-            <button class="w3-right">Register</button>
+            <input class="w3-border" type="password" id="passwordInput" /><br /><br />
+            <button id="registerButton" class="w3-right">Register</button>
         </form>
     </div>
 
@@ -42,6 +40,7 @@
         <p>&copy;2023 - Author : Fatema Asif</p>
     </div>
 
-    <script src=""></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="Register.js"></script>
 </body>
 </html>

@@ -53,14 +53,15 @@ namespace MultiUserBloggingPlatform
             }
         }
 
-        public void DeleteUser(int UserID)
+        public void DeleteUser(int userid, string username)
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("BlogDBConnection")))
             {
                 using (SqlCommand command = new SqlCommand("DeleteUser", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@UID", UserID);
+                    command.Parameters.AddWithValue("@UID", userid);
+                    command.Parameters.AddWithValue("@Username", username);
 
                     connection.Open();
                     command.ExecuteNonQuery();

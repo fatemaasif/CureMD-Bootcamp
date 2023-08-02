@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MultiUserBloggingPlatform.Models;
 using System;
 using System.Collections.Generic;
+
 namespace MultiUserBloggingPlatform.Controllers
 {
     [Route("api/[controller]")]
@@ -15,15 +16,15 @@ namespace MultiUserBloggingPlatform.Controllers
             this.dataLayer = dataLayer;
         }
 
-        [HttpGet("{PostID}")]
-        public IActionResult GetPost(int PostID)
+        [HttpGet("{id}")]
+        public IActionResult GetPost(int id)
         {
-            Post post = dataLayer.GetPost(PostID);
+            Post post = dataLayer.GetPost(id);
             if (post == null)
             {
-                return NotFound(); // the user is not found
+                return NotFound("Post not found"); // the post is not found
             }
-            return Ok(post); // Return 200 OK with the user data if found
+            return Ok(post); // Return 200 OK with the post data if found
         }
 
         [HttpPost]
@@ -31,68 +32,68 @@ namespace MultiUserBloggingPlatform.Controllers
         {
             try
             {
-                dataLayer.CreatePost(post.PostText, (int)post.CategoryID, (int)post.UserID, post.PostTitle,post.Username);
-                return Ok(); // Return 200 OK if the user is created successfully
+                dataLayer.CreatePost(post.PostText, (int)post.CategoryID, (int)post.UserID, post.PostTitle, post.Username);
+                return Ok("Post created successfully"); // Return 200 OK if the post is created successfully
             }
             catch (Exception Exc)
             {
-                return StatusCode(500, Exc.Message); // Return the error message from the exception with status code 500
-
+                return StatusCode(StatusCodes.Status500InternalServerError, Exc.Message); // Return the error message from the exception with status code 500
             }
         }
-        [HttpPut("{PostID}")]
+
+        [HttpPut("{id}")]
         public IActionResult UpdatePost(int id, Post updatedPost)
         {
             Post existingPost = dataLayer.GetPost(id);
             if (existingPost == null)
             {
-                return NotFound(); // User with the given id not found
+                return NotFound("Post not found"); // Post with the given id not found
             }
             dataLayer.UpdatePost(id, updatedPost.PostText, (int)updatedPost.CategoryID, (int)updatedPost.UserID);
-            return Ok(); // Return 200 OK if the user is updated successfully
+            return Ok("Post updated successfully"); // Return 200 OK if the post is updated successfully
         }
 
-        [HttpDelete("{PostID}")]
+        [HttpDelete("{id}")]
         public IActionResult DeletePost(int id)
         {
             Post existingPost = dataLayer.GetPost(id);
             if (existingPost == null)
             {
-                return NotFound(); // User with the given id not found
+                return NotFound("Post not found"); // Post with the given id not found
             }
             dataLayer.DeletePost(id);
-            return Ok(); // Return 200 OK if the user is deleted successfully
+            return Ok("Post deleted successfully"); // Return 200 OK if the post is deleted successfully
         }
 
-        [HttpGet("{PostID}")]
-        public IActionResult GetPostWithComments(int PostID)
+        [HttpGet("{id}/comments")]
+        public IActionResult GetPostWithComments(int id)
         {
-            List<Comment> comments = dataLayer.GetPostWithComments(PostID);
+            List<Comment> comments = dataLayer.GetPostWithComments(id);
             if (comments == null || comments.Count == 0)
             {
-                return NotFound(); // No comments found for the given PostID
+                return NotFound("No comments found for the given PostID"); // No comments found for the given PostID
             }
             return Ok(comments); // Return 200 OK with the list of comments
         }
 
-        [HttpGet("{CategoryID}")]
-        public IActionResult GetPostsByCategory(int CategoryID)
+        [HttpGet("category/{categoryID}")]
+        public IActionResult GetPostsByCategory(int categoryID)
         {
-            List<Post> posts = dataLayer.GetPostsByCategory(CategoryID);
+            List<Post> posts = dataLayer.GetPostsByCategory(categoryID);
             if (posts == null || posts.Count == 0)
             {
-                return NotFound(); // No posts found for the given CategoryID
+                return NotFound("No posts found for the given CategoryID"); // No posts found for the given CategoryID
             }
             return Ok(posts); // Return 200 OK with the list of posts
         }
 
-        [HttpGet("{UserID}")]
-        public IActionResult GetPostsByUser(int UserID)
+        [HttpGet("user/{userID}")]
+        public IActionResult GetPostsByUser(int userID)
         {
-            List<Post> posts = dataLayer.GetPostsByUser(UserID);
+            List<Post> posts = dataLayer.GetPostsByUser(userID);
             if (posts == null || posts.Count == 0)
             {
-                return NotFound(); // No posts found for the given UserID
+                return NotFound("No posts found for the given UserID"); // No posts found for the given UserID
             }
             return Ok(posts); // Return 200 OK with the list of posts
         }

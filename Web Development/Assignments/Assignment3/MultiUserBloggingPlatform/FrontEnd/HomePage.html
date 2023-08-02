@@ -5,6 +5,7 @@
     <title>The Blogger's Bay</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         /* Add any custom CSS here */
     </style>
@@ -37,7 +38,8 @@
                 <label>Post Title</label><br />
                 <input type="text" /><br /><br />
                 <label>Post Content</label><br />
-                <textarea id="PostText" rows="4" cols="30"></textarea>
+                <textarea id="PostText" rows="4" cols="30" style="max-width: 400px; max-height: 120px; resize:none"></textarea><br />
+                <button class="w3-button w3-round-large w3-black" id="#createPostButton">Create Post</button>
             </form>
         </div>
     </div>
@@ -57,6 +59,7 @@
         <p>&copy;2023 - Author: Fatema Asif</p>
     </div>
 
-    <script src=""></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="HomePage.js"></script>
 </body>
 </html>

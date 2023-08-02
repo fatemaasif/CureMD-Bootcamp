@@ -23,7 +23,7 @@ namespace MultiUserBloggingPlatform.Controllers
             var comment = dataLayer.GetComment(id);
             if (comment == null)
             {
-                return NotFound(); 
+                return NotFound("Comment not found"); 
             }
 
             return Ok(comment);
@@ -35,7 +35,7 @@ namespace MultiUserBloggingPlatform.Controllers
             try
             {
                 dataLayer.CreateComment(newComment.CommentText, (int)newComment.UserID, (int)newComment.PostID,newComment.Username,newComment.PostTitle);
-                return Ok(); // Return 200 OK if the user is created successfully
+                return Ok("Comment created successfully"); // Return 200 OK if the user is created successfully
             }
             catch (Exception Exc)
             {
@@ -50,11 +50,11 @@ namespace MultiUserBloggingPlatform.Controllers
             Comment existingComment = dataLayer.GetComment(id);
             if (existingComment == null)
             {
-                return NotFound(); 
+                return NotFound("Comment not found"); 
             }
 
             dataLayer.UpdateComment(id, updatedComment.CommentText, (int)updatedComment.UserID, (int)updatedComment.PostID, updatedComment.Username, updatedComment.PostTitle);
-            return Ok(); 
+            return Ok("Comment updated successfully"); 
         }
 
         [HttpDelete("{PostID}")]
@@ -63,10 +63,10 @@ namespace MultiUserBloggingPlatform.Controllers
             var existingComment = dataLayer.GetComment(id);
             if (existingComment == null)
             {
-                return NotFound(); 
+                return NotFound("Comment not found"); 
             }
             dataLayer.DeleteComment(id);
-            return Ok();
+            return Ok("Comment deleted successfully");
         }
     }
 
