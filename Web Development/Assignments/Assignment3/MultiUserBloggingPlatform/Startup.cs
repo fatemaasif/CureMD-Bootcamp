@@ -20,6 +20,7 @@ namespace MultiUserBloggingPlatform
         {
             // Add services to the container.
             services.AddScoped<DataLayer>();
+            services.AddControllers();
 
             // Add other services here if needed.
             // services.AddSomeOtherService();
@@ -43,7 +44,7 @@ namespace MultiUserBloggingPlatform
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
