@@ -1,0 +1,7 @@
+CREATE TABLE Students(
+ID INT PRIMARY KEY IDENTITY(1,1), 
+FirstName VARCHAR(10), 
+LastName VARCHAR(10), 
+Age INT, 
+Course VARCHAR(15)
+);
