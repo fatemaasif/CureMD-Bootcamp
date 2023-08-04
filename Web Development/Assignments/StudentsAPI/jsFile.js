@@ -2,10 +2,11 @@
     // Function to fetch and display the student data
     function fetchStudentsData() {
         $.ajax({
-            url: "/api/Student", 
+            url: "/Student",
             type: "GET",
             dataType: "json",
             success: function (data) {
+                studentDataList = data;
                 displayStudents(data);
             },
             error: function (xhr, status, error) {
@@ -47,6 +48,53 @@
         });
     });
 
+    //function to get single student data
+    function displayStudent(data) {
+        $("#searchedStudentdata").html("<p>Name: " + data.firstName+" "+data.lastName + "</p><p>Age: " + data.age + ", Course: "+data.course+ "</p>");
+    }
+
+    //function to obtain ID of single student
+    function getStudentID(searchInput) {
+        for (var i = 0; i < studentDataList.length; i++) {
+            var student = {
+                fname: studentDataList[i].firstName,
+                lname: studentDataList[i].lastName,
+                studentID: studentDataList[i].ID
+            };
+            if (searchInput === student.fname || searchInput === student.fname.toLowerCase || searchInput === student.lname || searchInput === student.lname.toLowerCase) {
+                return student.studentID;
+            }
+        }
+    }
+
+    // Function to get single student data
+    function getStudentData(ID) {
+        $.ajax({
+            url: '/Student/' + ID,
+            type: 'GET',
+            success: function (data) {
+                console.log('Student data retrieved successfully:', data);
+                displayStudent(data);
+            },
+            error: function (error) {
+                console.error('Error getting student data:', error);
+            }
+        });
+    }
+
+    // Click event handler for the search button
+    $("#searchButton").click(function (e) {
+        e.preventDefault(); // Prevent the default form submission behavior
+        var search = $("#searchInput").val();
+        if (search === "") {
+            alert("Please enter correct name in the search bar");
+            return;
+        }
+        var userID = getStudentID(search);
+        getStudentData(userID); // Call the function to get student data with the given search parameter (ID or name)
+    });
+
     // Fetch and display the student data on page load
     fetchStudentsData();
 });
+var studentDataList;
