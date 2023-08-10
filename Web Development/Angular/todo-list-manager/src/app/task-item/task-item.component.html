@@ -1,0 +1,5 @@
+<div class="task-item" *ngIf="task">
+    <input type="checkbox" [checked]="task.completed" />
+    <span>{{ task.title }}</span>
+    <span class="material-icons delete-icon" type="button" (click)="deleteTask(task)">delete</span>
+</div>
