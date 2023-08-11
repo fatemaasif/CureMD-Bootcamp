@@ -1,5 +1,28 @@
-<ul>
+<div class="w3-container w3-half">
+  <div class="w3-center">
+    <app-task-form (taskAdded)="handleTaskAdded($event)"></app-task-form>
+  </div>
+  <ul>
     <li *ngFor="let task of tasks">
-        <app-task-item [task]="task" (taskDeleted)="handleTaskDeleted($event)"></app-task-item>
+      <app-task-item
+        [task]="task"
+        (taskDeleted)="handleTaskDeleted($event)"
+        (taskCompleted)="handleTaskCompleted($event)"
+      ></app-task-item>
     </li>
-</ul>
+  </ul>
+</div>
+<div class="w3-half w3-flex w3-justify-center">
+    <div class="w3-card w3-quarter custom-card">
+      <header class="w3-container w3-purple">
+        <h4>Task List Details</h4>
+      </header>
+      <div class="w3-container w3-padding-24">
+        <app-tasklist-data
+          [totalTasks]="totaltasks"
+          [tasksCompleted]="completedTasks"
+        ></app-tasklist-data>
+      </div>
+    </div>
+  </div>
+  

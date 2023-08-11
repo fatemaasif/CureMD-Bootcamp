@@ -1,9 +1,13 @@
-:host {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 20px;
-  }
-
   li{
     list-style: none;
   }
+
+  .custom-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure the card takes full height of the container */
+    margin: auto; /* Center horizontally within parent */
+  }
+  

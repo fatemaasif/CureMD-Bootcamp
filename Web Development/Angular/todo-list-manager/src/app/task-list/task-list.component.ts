@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input  } from '@angular/core';
 import { Task } from "../task";
 
 @Component({
@@ -8,12 +8,29 @@ import { Task } from "../task";
 })
 
 export class TaskListComponent{
-  @Input() tasks: Task[] = [];
-  
+  tasks: Task[] = [];
+  totaltasks:number=0;
+  completedTasks:number=0;
+
+  handleTaskAdded(newTask:Task){
+    this.tasks.push(newTask);
+    this.totaltasks++;
+  }
+
   handleTaskDeleted(task: Task) {
     const index = this.tasks.indexOf(task);
     if (index !== -1) {
       this.tasks.splice(index, 1);
+      this.totaltasks--;
     }
+  }
+
+  handleTaskCompleted(task:Task){
+    this.completedTasks=0;
+    this.tasks.forEach(task => {
+      if(task.completed){
+        this.completedTasks++;
+      }
+    });
   }
 }

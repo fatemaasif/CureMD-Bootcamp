@@ -1,5 +1,7 @@
-<div class="task-item" *ngIf="task">
-    <input type="checkbox" [checked]="task.completed" />
-    <span>{{ task.title }}</span>
+<div class="task-item w3-card" *ngIf="task">
+    <div class="task-content">
+        <input id="taskCompleteCheck" type="checkbox" [checked]="task.completed" (change)="checkboxChange(task)"/>
+        <span class="w3-margin-left">{{ task.title }}</span>
+    </div>
     <span class="material-icons delete-icon" type="button" (click)="deleteTask(task)">delete</span>
 </div>

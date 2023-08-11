@@ -1,10 +1,9 @@
 <div>
-  <h1>{{title}}</h1>
+  <h1 class="w3-container w3-text-teal w3-center w3-padding-16">{{ title }}</h1>
 
-  <app-task-form (taskAdded)="handleTaskAdded($event)"></app-task-form>
 
-  <app-task-list [tasks]="tasks"></app-task-list>
+  <app-task-list></app-task-list>
 
-  <app-tasklist-data [tasknum]="tasksTotal"></app-tasklist-data>
+
 
 </div>

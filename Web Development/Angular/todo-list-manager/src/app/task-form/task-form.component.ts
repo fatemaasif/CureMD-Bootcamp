@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Task } from '../task';
 
 @Component({
@@ -10,15 +10,17 @@ import { Task } from '../task';
 
 export class TaskFormComponent{
   @Output() taskAdded = new EventEmitter<Task>();
+  @ViewChild('taskInput', {static:false}) taskInput!:ElementRef<HTMLInputElement>;
 
-  addTask(newTaskTitle: string) {
-    if (newTaskTitle.trim()) {
+  addTask(inputElement: HTMLInputElement) {
+    let newTaskTitle= inputElement.value.trim();
+    if (newTaskTitle) {
       const newTask: Task = {
         title: newTaskTitle,
         completed: false
       };
       this.taskAdded.emit(newTask);
-      newTaskTitle='';
+      inputElement.value = '';
     }
   }
   

@@ -9,9 +9,14 @@ import { Task } from '../task';
 export class TaskItemComponent {
   @Input() task?: Task;
   @Output() taskDeleted = new EventEmitter<Task>();
+  @Output() taskCompleted = new EventEmitter<Task>();
 
   deleteTask(task:Task){
     this.taskDeleted.emit(task);
   }
 
+  checkboxChange(task: Task){
+    task.completed = !task.completed;
+    this.taskCompleted.emit(task);
+  }
 }
