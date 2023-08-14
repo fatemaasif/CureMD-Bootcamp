@@ -1,0 +1,81 @@
+<div class="task-box" *ngFor="let task of tasklist" cdkDrag>
+  <!--for the active list tasks-->
+  <span *ngIf="!task.completed">
+    <span>
+      <mat-icon
+        *ngIf="!task.editMode"
+        class="edit-icon"
+        (click)="toggleEditMode(task)"
+        >edit</mat-icon
+      >
+    </span>
+    <span *ngIf="!task.editMode">
+      {{ task.title }}
+      <span>
+        <mat-checkbox
+          class="checkedBox"
+          [checked]="false"
+          (change)="invertComplete(task)"
+          text-align="end"
+        ></mat-checkbox>
+      </span>
+    </span>
+
+    <span *ngIf="task.editMode">
+      <span>
+        <mat-form-field class="example-form-field">
+          <mat-label>Enter Task</mat-label>
+          <span class="input-field">
+            <input
+              matInput
+              type="text"
+              #newTaskInput
+              (keydown.enter)="saveTask(task, newTaskInput.value)"
+              (keydown.escape)="cancelEdit(task)"
+            />
+            <span class="cancel-save-btns">
+              <button
+                *ngIf="newTaskInput.value"
+                matSuffix
+                mat-icon-button
+                (click)="saveTask(task, newTaskInput.value)"
+              >
+                <mat-icon *ngIf="task.editMode" class="save-button"
+                  >save</mat-icon
+                >
+              </button>
+
+              <button
+                *ngIf="newTaskInput.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+                (click)="newTaskInput.value = ''"
+                (click)="cancelEdit(task)"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </span>
+          </span>
+        </mat-form-field>
+      </span>
+    </span>
+  </span>
+
+  <!--for the completed list tasks-->
+  <span *ngIf="task.completed">
+    <span>
+      {{ task.title }}
+    </span>
+    <span>
+      <mat-checkbox
+        class="checkedBox"
+        [checked]="true"
+        (change)="invertComplete(task)"
+        text-align="end"
+      ></mat-checkbox>
+    </span>
+  </span>
+
+  <span> </span>
+</div>

@@ -1,0 +1,39 @@
+<mat-card class="mat-layout-item">
+  <mat-card-title class="card-title-container">
+    {{ title }}
+  </mat-card-title>
+
+  <ng-container [ngSwitch]="listType">
+    <ng-container *ngSwitchCase="'active'">
+      <!-- active task list content will go here -->
+      <div
+        cdkDropList
+        id = "todoList"
+        [cdkDropListData]="activeTasks"
+        [cdkDropListConnectedTo]="['doneList']"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <app-task-item [tasklist]="activeTasks"></app-task-item>
+      </div>
+      <mat-card-footer>
+        <app-task-adder (taskAdded)="updateService($event)"></app-task-adder>
+      </mat-card-footer>
+    </ng-container>
+    
+    <ng-container *ngSwitchCase="'completed'">
+      <!-- completed task list content will go here -->
+
+      <div
+        cdkDropList
+        id = "doneList"
+        [cdkDropListData]="completedTasks"
+        [cdkDropListConnectedTo]="['todoList']"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <app-task-item [tasklist]="completedTasks" ></app-task-item>
+      </div>
+    </ng-container>
+  </ng-container>
+
+
+</mat-card>
