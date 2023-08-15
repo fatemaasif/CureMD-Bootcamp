@@ -14,6 +14,11 @@ import {Dialog, DialogRef, DIALOG_DATA, DialogModule} from '@angular/cdk/dialog'
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import {MatInputModule} from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const MaterialComponents = [
   MatToolbarModule,
@@ -25,7 +30,13 @@ const MaterialComponents = [
   DialogModule,
   MatCheckboxModule,
   MatInputModule,
-  MatDialogModule
+  MatDialogModule,
+  BrowserAnimationsModule,
+  ToastrModule.forRoot(),
+  MatProgressSpinnerModule,
+  MatProgressSpinnerModule,
+  MatDividerModule,
+  MatProgressBarModule
 ];
 
 @NgModule({

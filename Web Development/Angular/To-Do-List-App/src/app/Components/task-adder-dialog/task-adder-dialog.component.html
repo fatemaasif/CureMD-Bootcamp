@@ -10,8 +10,8 @@
   </mat-form-field><br>
   <mat-form-field class="input-field">
     <mat-label>Time to completion</mat-label>
-    <input matInput #taskTimeInput type="number">
-    <mat-hint align="end">{{taskTimeInput.value.length}} / 60 sec</mat-hint>
+    <input matInput #taskTimeInput type="number" [max]="100" [min]="0">
+    <mat-hint align="end">{{taskTimeInput.value}} / 100 sec</mat-hint>
   </mat-form-field>
   </div>
   
@@ -21,6 +21,6 @@
   <button 
   mat-raised-button 
   mat-dialog-close="true" 
-  (click)="onOkayClick({title:taskTitleInput.value,completed:false,timeToCompletion:taskTimeInput.value.length})" 
+  (click)="onOkayClick(taskTitleInput.value, taskTimeInput.value)" 
   cdkFocusInitial>Ok</button>
 </div>

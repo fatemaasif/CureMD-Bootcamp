@@ -19,12 +19,10 @@ export class TaskAdderDialogComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  onOkayClick(task: Task) {
-    if (task.title = '') {
-      alert('Please fill in all required fields.');
-      return;
-    }
-    this.tasksService.addTask(task);
+  onOkayClick(tasktitle:string,taskTime:string) {
+    if (taskTime==='0'||taskTime===''){taskTime='-1'}
+    const newTask:Task = {title:tasktitle, completed:false, timeToCompletion:Number(taskTime)}
+    this.tasksService.addTask(newTask);
     this.tasksService.updateWithNewTasks(this.tasksService.getTasks());
   }
 }

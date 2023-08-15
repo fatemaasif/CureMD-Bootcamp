@@ -12,12 +12,23 @@
     font-size: 14px;
   }
 
-  .edit-icon{
-    cursor: pointer;
+  .item-container2{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .checkedBox{
-    text-align: right;
+  .item-container1{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .edit-icon{
+    cursor: pointer;
+
   }
 
   .input-field{
@@ -30,4 +41,19 @@
 
   .example-form-field{
     width: fit-content;
+  }
+
+  .spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .time {
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    z-index: 1;
   }

@@ -1,69 +1,70 @@
 <div class="task-box" *ngFor="let task of tasklist" cdkDrag>
   <!--for the active list tasks-->
-  <span *ngIf="!task.completed">
-    <span>
-      <mat-icon
-        *ngIf="!task.editMode"
-        class="edit-icon"
-        (click)="toggleEditMode(task)"
-        >edit</mat-icon
-      >
-    </span>
-    <span *ngIf="!task.editMode">
-      {{ task.title }}
+  <span *ngIf="!task.completed" class="item-container1">
+    <!-- Edit icon and title when not in edit mode -->
+    <ng-container *ngIf="!task.editMode">
       <span>
-        <mat-checkbox
-          class="checkedBox"
-          [checked]="false"
-          (change)="invertComplete(task)"
-          text-align="end"
-        ></mat-checkbox>
+        <mat-icon class="edit-icon" (click)="toggleEditMode(task)"
+          >edit</mat-icon
+        >
+        <span class="title">{{ task.title }}</span>
       </span>
-    </span>
+      <!--to place text between spinner-->
+      <div class="spinner-container">
+        <mat-progress-spinner
+          class="progress-spinner"
+          [color]="color"
+          [mode]="mode"
+          [diameter]="60"
+          [value]="task.timeToCompletion"
+        ></mat-progress-spinner>
+        <ng-container *ngIf="task.timeToCompletion > 0">
+          <span class="time">{{ task.timeToCompletion }}</span>
+        </ng-container>
+      </div>
+      <mat-checkbox
+        class="checkedBox"
+        [checked]="false"
+        [class.selected]="inversionHappening"
+        (change)="invertComplete(task)"
+      ></mat-checkbox>
+    </ng-container>
 
-    <span *ngIf="task.editMode">
-      <span>
-        <mat-form-field class="example-form-field">
-          <mat-label>Enter Task</mat-label>
-          <span class="input-field">
-            <input
-              matInput
-              type="text"
-              #newTaskInput
-              (keydown.enter)="saveTask(task, newTaskInput.value)"
-              (keydown.escape)="cancelEdit(task)"
-            />
-            <span class="cancel-save-btns">
-              <button
-                *ngIf="newTaskInput.value"
-                matSuffix
-                mat-icon-button
-                (click)="saveTask(task, newTaskInput.value)"
-              >
-                <mat-icon *ngIf="task.editMode" class="save-button"
-                  >save</mat-icon
-                >
-              </button>
-
-              <button
-                *ngIf="newTaskInput.value"
-                matSuffix
-                mat-icon-button
-                aria-label="Clear"
-                (click)="newTaskInput.value = ''"
-                (click)="cancelEdit(task)"
-              >
-                <mat-icon>close</mat-icon>
-              </button>
-            </span>
-          </span>
-        </mat-form-field>
-      </span>
-    </span>
+    <!-- Edit mode content -->
+    <ng-container *ngIf="task.editMode">
+      <mat-form-field class="example-form-field">
+        <mat-label>Edit Task</mat-label>
+        <input
+          matInput
+          type="text"
+          #newTaskInput
+          (keydown.enter)="saveTask(task, newTaskInput.value)"
+          (keydown.escape)="cancelEdit(task)"
+      /></mat-form-field>
+      <div class="cancel-save-btns">
+        <button
+          *ngIf="newTaskInput.value"
+          matSuffix
+          mat-icon-button
+          (click)="saveTask(task, newTaskInput.value)"
+        >
+          <mat-icon *ngIf="task.editMode" class="save-button">save</mat-icon>
+        </button>
+        <button
+          *ngIf="newTaskInput.value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="newTaskInput.value = ''; cancelEdit(task)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </ng-container>
   </span>
 
   <!--for the completed list tasks-->
-  <span *ngIf="task.completed">
+  <span *ngIf="task.completed" class="item-container2">
     <span>
       {{ task.title }}
     </span>
@@ -71,11 +72,10 @@
       <mat-checkbox
         class="checkedBox"
         [checked]="true"
+        [class.selected]="inversionHappening"
         (change)="invertComplete(task)"
         text-align="end"
       ></mat-checkbox>
     </span>
   </span>
-
-  <span> </span>
 </div>

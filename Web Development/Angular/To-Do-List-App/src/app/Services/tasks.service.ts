@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../Interface/task';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -10,27 +11,32 @@ export class TasksService {
   public tasks: Task[]=[
     {
       'title': 'TaskOne',
-      'completed': false
+      'completed': false,
+      timeToCompletion:-1
     },
     {
       'title': 'TaskTwo',
-      'completed': false
+      'completed': false,
+      timeToCompletion:-1
     },
     {
       'title': 'TaskThree',
-      'completed': true
+      'completed': true,
+      timeToCompletion:0
     },
     {
       'title': 'TaskFour',
-      'completed': true
+      'completed': true,
+      timeToCompletion:0
     },
     {
       'title': 'TaskFive',
-      'completed': true
+      'completed': true,
+      timeToCompletion:0
     }
   ];
   private tasksSubject = new BehaviorSubject<Task[]>(this.tasks);
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
   //get tasks as an observable
   get tasksObservable(): Observable<Task[]> {
     return this.tasksSubject.asObservable();
@@ -40,7 +46,8 @@ export class TasksService {
   }
   //add tasks
   addTask(task: Task):void{
-    this.tasks.push({title:task.title,completed:false});
+    this.tasks.push({title:task.title,completed:false, timeToCompletion:task.timeToCompletion});
+    this.toastr.success('Task Added', 'Your task has been added succesfully!');
   }
   //get number of total tasks
   getTotalTaskCount():number{
@@ -58,7 +65,7 @@ export class TasksService {
   }
   //get count of active tasks
   getNumberofActiveTasks():number{
-    return this.getActiveTasks.length;
+    return this.getActiveTasks().length;
   }
   //obtain array of completed tasks to be shown in completed task list
   getCompletedTasks() : Task[] {
@@ -72,7 +79,7 @@ export class TasksService {
   }
   //get count of completed tasks
   getNumberofCompletedTasks():number{
-    return this.getCompletedTasks.length;
+    return this.getCompletedTasks().length;
   }
   //update the task lists
   updateTasks(taskList1: Task[], taskList2: Task[]) {
@@ -93,5 +100,11 @@ export class TasksService {
   updateWithNewTasks(newTasks: Task[]): void {
     this.tasks = newTasks;
     this.tasksSubject.next(this.tasks); // Emit the updated tasks array
+  }
+  //set all to complete
+  setAllTasksToComplete():void{
+    this.tasks.forEach(task => {
+      task.completed=true;
+    });
   }
 }

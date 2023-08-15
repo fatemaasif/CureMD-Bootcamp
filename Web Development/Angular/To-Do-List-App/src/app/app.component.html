@@ -1,7 +1,6 @@
-<app-toolbar></app-toolbar>
+<app-toolbar [title]="title"></app-toolbar>
 
 <div class="task-list-container">
-    
   <app-task-list-container
     listType="active"
     title="Active Tasks"
@@ -12,4 +11,5 @@
     title="Completed Tasks"
   ></app-task-list-container>
 
+  <app-task-data></app-task-data>
 </div>

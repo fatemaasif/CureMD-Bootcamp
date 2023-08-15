@@ -12,6 +12,7 @@ import { ActiveTaskListComponent } from './Components/active-task-list/active-ta
 import { CompletedTaskListComponent } from './Components/completed-task-list/completed-task-list.component';
 import { TaskAdderDialogComponent } from './Components/task-adder-dialog/task-adder-dialog.component';
 import { TaskItemComponent } from './Components/task-item/task-item.component';
+import { TaskDataComponent } from './Components/task-data/task-data.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TaskItemComponent } from './Components/task-item/task-item.component';
     ActiveTaskListComponent,
     CompletedTaskListComponent,
     TaskAdderDialogComponent,
-    TaskItemComponent
+    TaskItemComponent,
+    TaskDataComponent
   ],
   imports: [
     BrowserModule,

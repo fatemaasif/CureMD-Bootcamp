@@ -12,7 +12,7 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angu
 export class TaskAdderComponent {
   constructor(public tasksService: TasksService, public dialog: MatDialog) { }
   @Output() taskAdded = new EventEmitter<Task[]>(); 
-  task: Task = { title: '', completed: false };
+  task: Task = { title: '', completed: false, timeToCompletion:0 };
 
   addTask() {
     this.openDialog();
