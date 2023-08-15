@@ -45,10 +45,6 @@ export class TaskListContainerComponent{
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
       //toggles the complete state of the event
       event.container.data[event.currentIndex].completed=!event.container.data[event.currentIndex].completed;
-      //set the time of the task to -1
-      if(event.previousContainer.id === 'doneList' && event.previousContainer.data[event.previousIndex]===-1){
-
-      }
     }
   };
 
