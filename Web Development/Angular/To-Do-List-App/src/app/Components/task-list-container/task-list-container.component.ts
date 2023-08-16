@@ -7,6 +7,7 @@ import { CdkDragDrop,
 import { TasksService } from 'src/app/Services/tasks.service';
 import { Task } from 'src/app/Interface/task';
 import { interval } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-task-list-container',
@@ -14,7 +15,7 @@ import { interval } from 'rxjs';
   styleUrls: ['./task-list-container.component.css']
 })
 export class TaskListContainerComponent{
-  constructor(public tasksService: TasksService) { }
+  constructor(public tasksService: TasksService, private toastrService: ToastrService) { }
   @Input() title: string = '';
   @Input() listType!: 'active' | 'completed';
 
@@ -42,6 +43,10 @@ export class TaskListContainerComponent{
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     }
     else {
+      //before the transfer for first time, timeToCompletion=0 has to be set to -1 in order to prevent it from returning to completed
+      if(event.previousContainer.data[event.previousIndex].timeToCompletion===0){
+        event.previousContainer.data[event.previousIndex].timeToCompletion=-1;
+      }
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
       //toggles the complete state of the event
       event.container.data[event.currentIndex].completed=!event.container.data[event.currentIndex].completed;
