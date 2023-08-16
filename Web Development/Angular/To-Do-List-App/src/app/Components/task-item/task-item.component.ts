@@ -25,7 +25,7 @@ export class TaskItemComponent {
     //if itentionally set to incomplete - reset the time to completion
     task.timeToCompletion = -1;
     //for the transition
-    const transitionDuration = 500 //ms
+    const transitionDuration = 1000 //ms
     
   }
 

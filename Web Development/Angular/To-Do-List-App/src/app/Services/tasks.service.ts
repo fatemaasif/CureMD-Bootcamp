@@ -8,39 +8,49 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class TasksService {
-  public tasks: Task[]=[
+  constructor(private toastr: ToastrService) { }
+  tasks: Task[]=[
     {
       'title': 'TaskOne',
       'completed': false,
-      timeToCompletion:-1
+      'timeToCompletion':-1
     },
     {
       'title': 'TaskTwo',
       'completed': false,
-      timeToCompletion:-1
+      'timeToCompletion':-1
     },
     {
       'title': 'TaskThree',
       'completed': true,
-      timeToCompletion:0
+      'timeToCompletion':0
     },
     {
       'title': 'TaskFour',
       'completed': true,
-      timeToCompletion:0
+      'timeToCompletion':0
     },
     {
       'title': 'TaskFive',
       'completed': true,
-      timeToCompletion:0
+      'timeToCompletion':0
     }
   ];
   private tasksSubject = new BehaviorSubject<Task[]>(this.tasks);
-  constructor(private toastr: ToastrService) { }
+  private activeTasksSubject = new BehaviorSubject<Task[]>(this.getActiveTasks());
+  private completedTasksSubject = new BehaviorSubject<Task[]>(this.getCompletedTasks());
+  
   //get tasks as an observable
   get tasksObservable(): Observable<Task[]> {
     return this.tasksSubject.asObservable();
   }
+  get activeTasksObservable(): Observable<Task[]> {
+    return this.activeTasksSubject.asObservable();
+  }
+  get completedTasksObservable(): Observable<Task[]> {
+    return this.completedTasksSubject.asObservable();
+  }
+
   getTasks():Task[]{
     return this.tasks;
   }
@@ -100,6 +110,8 @@ export class TasksService {
   updateWithNewTasks(newTasks: Task[]): void {
     this.tasks = newTasks;
     this.tasksSubject.next(this.tasks); // Emit the updated tasks array
+    this.activeTasksSubject.next(this.getActiveTasks());
+    this.completedTasksSubject.next(this.getCompletedTasks());
   }
   //set all to complete
   setAllTasksToComplete():void{

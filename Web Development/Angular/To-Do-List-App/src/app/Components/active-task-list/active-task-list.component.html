@@ -1,0 +1,12 @@
+<div
+        cdkDropList
+        id = "todoList"
+        [cdkDropListData]="activeTasks"
+        [cdkDropListConnectedTo]="['doneList']"
+        class="example-list"
+        (cdkDropListDropped)="taskDropped.emit($event)">
+        <app-task-item [tasklist]="activeTasks"></app-task-item>
+      </div>
+      <mat-card-footer>
+        <app-task-adder (taskAdded)="updateService($event)"></app-task-adder>
+      </mat-card-footer>

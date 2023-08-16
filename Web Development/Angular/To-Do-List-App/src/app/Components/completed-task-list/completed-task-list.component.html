@@ -1,0 +1,9 @@
+<div
+  cdkDropList
+  id="doneList"
+  [cdkDropListData]="completedTasks"
+  [cdkDropListConnectedTo]="['todoList']"
+  class="example-list"
+  (cdkDropListDropped)="taskDropped.emit($event)">
+  <app-task-item [tasklist]="completedTasks"></app-task-item>
+</div>

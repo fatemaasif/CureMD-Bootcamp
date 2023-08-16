@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 const MaterialComponents = [
   MatToolbarModule,
@@ -36,7 +37,8 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatProgressSpinnerModule,
   MatDividerModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatSidenavModule
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@ import { CdkDragDrop,
   CdkDropList } from '@angular/cdk/drag-drop';
 import { TasksService } from 'src/app/Services/tasks.service';
 import { Task } from 'src/app/Interface/task';
-import { interval } from 'rxjs';
+import { Subscription, interval } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -18,23 +18,23 @@ export class TaskListContainerComponent{
   constructor(public tasksService: TasksService, private toastrService: ToastrService) { }
   @Input() title: string = '';
   @Input() listType!: 'active' | 'completed';
-
   tasks:Task[]=[];
   activeTasks: Task[] = [];
   completedTasks: Task[] = [];
 
   ngOnInit(): void {
-    this.tasksService.tasksObservable.subscribe(updatedTasks => {
-      this.tasks = updatedTasks;
-    });
-    interval(1000).subscribe(() => {
-      this.updateTaskStatus();
-    });
-  }
-
-  ngDoCheck(): void {
-    this.activeTasks = this.tasksService.getActiveTasks();
-    this.completedTasks = this.tasksService.getCompletedTasks();
+      this.tasksService.tasksObservable.subscribe(updatedTasks => {
+        this.tasks = updatedTasks;
+      });
+      this.tasksService.activeTasksObservable.subscribe(updatedTasks=>{
+        this.activeTasks=updatedTasks;
+      });
+      this.tasksService.completedTasksObservable.subscribe(updatedTasks=>{
+        this.completedTasks=updatedTasks;
+      });
+      interval(1000).subscribe(() => {
+        this.updateTaskStatus();
+      });
   }
 
   //method to handle drag drop events in the list
