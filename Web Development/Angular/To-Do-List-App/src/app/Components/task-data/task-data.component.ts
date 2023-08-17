@@ -11,7 +11,7 @@ export class TaskDataComponent{
   completedTasks:number = 0;
   activeTasks:number = 0;
   
-  ngOnInit():void{
+  ngDoCheck():void{
     this.completedTasks=this.tasksService.getNumberofCompletedTasks();
     this.activeTasks=this.tasksService.getNumberofActiveTasks();
   }
