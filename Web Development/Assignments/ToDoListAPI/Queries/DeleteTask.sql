@@ -1,0 +1,8 @@
+CREATE PROCEDURE DeleteTask
+@TaskTitle VARCHAR(100)
+AS
+BEGIN
+DELETE FROM ToDoList
+WHERE TaskTitle=@TaskTitle;
+END
+GO
