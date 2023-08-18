@@ -4,39 +4,51 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Routing;
+using ToDoListAPI.Business_Layer;
+using ToDoListAPI.Models;
 
 namespace ToDoListAPI.Controllers
 {
     public class TaskController : ApiController
     {
-        private readonly Configuration _configuration;
-        public TaskController(Configuration config)
-        {
-            _configuration = config;
-        }
-
-        
+        public BusinessLayer dataLayer = new BusinessLayer();
         [HttpGet]
         [Route("GetTasks")]
-        public string GetAllTasks()
+        public List<Task> GetAllTasks()
         {
-            return "hello";
+            try
+            {
+                List<Task> tasks = new List<Task>();
+                tasks = dataLayer.GetAllTasks();
+                return tasks;
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("An exception of type " + exception.GetType().ToString()
+                   + " is encountered in GetAllTasks in Controller due to "
+                   + exception.Message, exception.InnerException);
+            }
         }
-        //public List<Task> GetAllTasks()
-        //{
-        //    List<Task> tasks = new List<Task>();
-        //    return tasks;
-        //}
 
-        //[HttpGet]
-        //public Task GetTask(string taskTitle)
-        //{
-        //    Task task = new Task();
-        //    return task;
-        //}
+        [HttpGet]
+        [Route("GetTask/{taskTitle}")]
+        public Task GetTask(string taskTitle)
+        {
+            try
+            {
+                Task task = dataLayer.GetTask(taskTitle);
+                return task;
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("An exception of type " + exception.GetType().ToString()
+                   + " is encountered in GetTask in Controller due to "
+                   + exception.Message, exception.InnerException);
+            }
+            
+        }
 
         [HttpPost]
         public void AddTask(string tasktitle, int timeToCompletion=-1, string taskCategory="")
